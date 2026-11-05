@@ -6,7 +6,10 @@ OS course project. Problem: several delivery partners try to accept the same ord
 |---|---|
 | `unsafe_version.py` | No lock -> race condition, one order accepted by many partners |
 | `safe_version.py` | Mutex lock per order -> each order accepted by exactly one partner |
-| `screenshots/` | Output screenshots of both versions |
+| `unsafe_version1.png` to `unsafe_version3.png`, `safe_version.png` | Output screenshots of both versions |
+
+## How it works
+In the unsafe version, a partner checks whether an order is free and then assigns it to themselves in two separate steps. Another partner can slip in between, so one order is accepted by many partners (a race condition). In the safe version, each order has a mutex lock, so the check and the assignment happen as one unit and only one partner can accept an order.
 
 ## How to run
 ```
